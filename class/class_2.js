@@ -5,6 +5,11 @@ class Vehicle{
         this.manufacturer = manufacturer,
         this.id =id;
     }
+    printmy(){
+        
+            return `${this.Year}, | ${this.speed}, | ${this.manufacturer} ${this.id}`
+        
+    }
 }
 class Truck extends Vehicle{
     constructor(Year, speed, manufacturer, id, loadingWeight){
@@ -24,6 +29,9 @@ class Car extends Vehicle{
     constructor(year, speed, manufacturer, id, door){
         super(year, speed, manufacturer, id);
         this.door = door;
+    }
+    show(){
+        return super.printmy
     }
 }
 class TwoWheeler extends Vehicle{
@@ -66,3 +74,52 @@ let users = [
     new User("issac", 38463907)
 ];
 
+let rented = [
+    {userId: 212259329, carId: "1"},
+    {userId: 4985, carId: "7477"}
+]
+
+function rentCar(){
+    let userId = 212259329;
+    userId= Check_if_user_exists_in_the_system(userId)
+    if(userId){
+        let carid = getUserFromRental(userId);
+        if(carid){
+            for(car of Vehicles){
+                if (car.id == carid){
+                    return alert(
+                        `
+                        You have already rented this vehicle : ${getObjectBiId().show}
+                        `
+                    )
+                }
+            }
+        }
+    }
+}
+
+function Check_if_user_exists_in_the_system(userid){
+    for(i of users){
+        if(i.id == userid){
+            return userid;
+        }
+    }
+}
+
+function getUserFromRental(userid){
+for(rent of rented){
+    if(rent.userId == userid){
+        return rent.carId;
+        
+    }
+  }
+}
+function getObjectBiId(){
+    let object = getObjectBiId();
+    for(i of Vehicles){
+        if(i.id == object){
+            return i;
+        }
+    }
+}
+rentCar()
